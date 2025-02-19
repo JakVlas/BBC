@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class zivoty : MonoBehaviour
 {
@@ -17,12 +18,15 @@ public class zivoty : MonoBehaviour
      zivoty_hrace = 100;   
     }
 
+    public void Zmena_sceny(string scena){
+        SceneManager.LoadScene(scena);
+    }
     // Update is called once per frame
     void Update()
     {
         if (zivoty_hrace == 0)
         {
-            UnityEngine.Debug.Log("zmiz");
+            Zmena_sceny("smrt");
         }
 
         health.SetText(zivoty_hrace.ToString());
