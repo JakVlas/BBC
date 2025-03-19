@@ -1,19 +1,19 @@
 using UnityEngine;
+using System.Collections;
 
 public class gun_mechanics : MonoBehaviour
 {
     public int damage;
-    public int zasobnik;
-    public int bullets_per_second;
+    public int bullets_per_second = 60;
     public int range;
     public Camera PlayerCamera;
-    private bool canFire;
+    private bool canFire = true;
 
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButton("Fire1")&& canFire)
         {
             Shoot();
         }
@@ -31,5 +31,14 @@ public class gun_mechanics : MonoBehaviour
                 target.TakeDamage(damage);
             }
         }
+        StartCoroutine(FireRate());
+
+    }
+
+    IEnumerator FireRate()
+    {   
+        float TimeForNextShot = 1/bullets_per_second;
+        yield return new WaitForSeconds(TimeForNextShot);
+        canFire = true;
     }
 }
