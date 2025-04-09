@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Target: MonoBehaviour
 {
-    private int health = 2;
+    public int health = 2;
     Rigidbody m_Rigidbody;
     Vector3 m_ZAxis;        
 
@@ -18,6 +18,7 @@ public class Target: MonoBehaviour
     public void TakeDamage(int amount)
     {
         health -=amount;
+        Debug.Log(health);
 
         if (health <= 0)
         {
@@ -28,14 +29,14 @@ public class Target: MonoBehaviour
     void Die()
     {
         m_Rigidbody.constraints = RigidbodyConstraints.None;
-        StartCourtine(Dying());
+        //StartCourtine(Dying());
         Destroy(gameObject); 
 
     }
-    IEnumerator Dying()
+    /*IEnumerator Dying()
     {
 
         yield return new WaitForSeconds(1);
    
-    }
+    }*/
 }

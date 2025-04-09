@@ -10,6 +10,7 @@ public class gun_mechanics : MonoBehaviour
     private bool canFire = true;
     public GameObject hitmarker;
     public float distance;
+    public int weapon_mode;
 
 
     void Start()
@@ -25,6 +26,11 @@ public class gun_mechanics : MonoBehaviour
         {
             Shoot();
             
+        }
+
+        if(Input.GetButtonDown("Fire3"))
+        {
+            Change_weapon_mode();
         }
     }
 
@@ -42,7 +48,6 @@ public class gun_mechanics : MonoBehaviour
             }
         }
         StartCoroutine(FireRate());
-
     }
 
     IEnumerator FireRate()
@@ -51,10 +56,7 @@ public class gun_mechanics : MonoBehaviour
         yield return new WaitForSeconds(TimeForNextShot);
         HitDisabled();
         canFire = true;
-    }
-
-    
-
+    }   
 
     private void HitActive(){
         hitmarker.SetActive(true);
@@ -62,5 +64,39 @@ public class gun_mechanics : MonoBehaviour
 
     private void HitDisabled(){
         hitmarker.SetActive(false);
+    }
+
+    void Change_weapon_mode()
+    {
+        if(weapon_mode != 2){
+            weapon_mode += 1;
+        }
+        else{
+            weapon_mode = 0;
+        }
+    
+
+        switch(weapon_mode)
+        {
+            case 0:
+                damage = 2;
+                range = 100;
+                bullets_per_second = 5;
+                break;
+
+            case 1:
+                damage = 5;
+                range = 5;
+                bullets_per_second = 2; 
+                break;
+
+            case 2:
+                damage = 1;
+                range = 10;
+                bullets_per_second = 10;
+                break;
+        }
+
+        Debug.Log("zmena na");
     }
 }
