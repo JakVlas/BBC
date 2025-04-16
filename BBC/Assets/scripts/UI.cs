@@ -7,16 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class zivoty : MonoBehaviour
 {
+    Target target = GameObject.Find("Player");
+    player_zdravi cs = target.GetComponent<player_zdravi>();
+    int zivoty_hrace = cs.zivoty_hrace;
 
-    public int zivoty_hrace;
     public Slider healthbar;
     public TMP_Text health;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-     zivoty_hrace = 100;   
-    }
 
     public void Zmena_sceny(string scena){
         SceneManager.LoadScene(scena);
@@ -24,10 +21,7 @@ public class zivoty : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (zivoty_hrace == 0)
-        {
-            Zmena_sceny("smrt");
-        }
+
 
         health.SetText(zivoty_hrace.ToString());
         healthbar.value = zivoty_hrace;

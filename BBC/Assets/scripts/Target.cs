@@ -12,6 +12,7 @@ public class Target: MonoBehaviour
     public Vector3 targetPosition;
     public float smoothTime = 0.5f;
     public float speed;
+    public int damage;
        
 
     void Start()
