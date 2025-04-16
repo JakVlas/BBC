@@ -10,4 +10,8 @@ public class uvod: MonoBehaviour
         SceneManager.LoadScene(scena);
     }
 
+    public void Konec(){
+        Application.Quit();
+    }
+
 }
