@@ -400,7 +400,7 @@
 "Assets/scripts/player_health.cs"
 "Assets/scripts/Player_movement.cs"
 "Assets/scripts/Target.cs"
-"Assets/scripts/UI.cs"
+"Assets/scripts/UI_script.cs"
 "Assets/scripts/uvod.cs"
 "Assets/scripts/WeaponSway.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
