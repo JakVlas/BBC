@@ -4,13 +4,10 @@ using UnityEngine.SceneManagement;
 public class player_health : MonoBehaviour
 {   
 
-    public void player_zdravi()
-    {
-        int zivoty_hrace;
-    }
+    static public int zivoty_hrace;
+
     void Start()
     {   
-        player_zdravi();
         zivoty_hrace = 100;
     }
 
@@ -19,11 +16,12 @@ public class player_health : MonoBehaviour
     {   
         GameObject kdoKoliduje = collision.collider.gameObject;
 
-        if (kdoKoliduje.tag == "nepritel")
+        if (kdoKoliduje.tag == "Enemy")
         {   
             Target nepritelScript = collision.gameObject.GetComponent<Target>();
             if (nepritelScript != null) 
                 {
+                    Debug.Log("chcipni");
                     zivoty_hrace -= nepritelScript.damage;
                 }
         }
