@@ -29,8 +29,10 @@ public class player_health : MonoBehaviour
 
     void Update()
     {
-        if (zivoty_hrace == 0)
+        if (zivoty_hrace <= 0)
             {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 Zmena_sceny("smrt");
             }
     }

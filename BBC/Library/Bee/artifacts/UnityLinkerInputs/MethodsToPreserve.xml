@@ -1,0 +1,10 @@
+<linker>
+	<assembly fullname="Assembly-CSharp" ignoreIfMissing="1">
+		<type fullname="uvod">
+			<method name="Konec"/>
+			<method name="Konec"/>
+			<method name="Zmena_sceny"/>
+			<method name="Zmena_sceny"/>
+		</type>
+	</assembly>
+</linker>
