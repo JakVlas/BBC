@@ -3,9 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class player_health : MonoBehaviour
 {   
-    public GameObject uiua;   
-   private UI_script uscript = uiua.GetComponent<UI_script>();
-   // int zivot = uiua.UI_script.zivoty_hrace;
+
+    static public int zivoty_hrace;
+
+    void Start()
+    {   
+        zivoty_hrace = 100;
+    }
+
+    // Update is called once per frame
     void OnCollisionEnter(Collision collision)
     {   
         GameObject kdoKoliduje = collision.collider.gameObject;
@@ -15,12 +21,22 @@ public class player_health : MonoBehaviour
             Target nepritelScript = collision.gameObject.GetComponent<Target>();
             if (nepritelScript != null) 
                 {
-
-               // zivot -= nepritelScript.damage;
-                 // UI.GetComponent<UI_script>.zivoty_hrace -= nepritelScript.damage;
+                    Debug.Log("chcipni");
+                    zivoty_hrace -= nepritelScript.damage;
                 }
         }
     }
- 
- 
+
+    void Update()
+    {
+        if (zivoty_hrace == 0)
+            {
+                Zmena_sceny("smrt");
+            }
+    }
+
+    public void Zmena_sceny(string scena)
+    {
+        SceneManager.LoadScene(scena);
+    }
 }
