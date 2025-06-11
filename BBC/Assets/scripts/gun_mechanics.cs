@@ -12,6 +12,11 @@ public class gun_mechanics : MonoBehaviour
     public float distance;
     public int weapon_mode;
 
+    //audioshit
+    public AudioSource audio;
+    public AudioClip sound1;
+    public AudioClip sound2;
+    public AudioClip sound3;
 
     void Start()
     {
@@ -34,6 +39,45 @@ public class gun_mechanics : MonoBehaviour
         }
     }
 
+    void Change_weapon_mode()
+    {
+        if (weapon_mode != 2)
+        {
+            weapon_mode += 1;
+        }
+        else
+        {
+            weapon_mode = 0;
+        }
+    
+
+        switch(weapon_mode)
+        {
+            case 0:
+                damage = 2;
+                range = 100;
+                bullets_per_second = 5;
+                audio.clip = sound1;
+                break;
+
+            case 1:
+                damage = 10;
+                range = 5;
+                bullets_per_second = 1; 
+                audio.clip = sound2;
+                break;
+
+            case 2:
+                damage = 1;
+                range = 10;
+                bullets_per_second = 10;    
+                audio.clip = sound3;
+                break;
+        }
+
+        Debug.Log("zmena na");
+    }       
+
     void Shoot()
     {   
         canFire = false;
@@ -48,6 +92,9 @@ public class gun_mechanics : MonoBehaviour
             }
         }
         StartCoroutine(FireRate());
+        
+        
+        audio.Play();
     }
 
     IEnumerator FireRate()
@@ -66,37 +113,5 @@ public class gun_mechanics : MonoBehaviour
         hitmarker.SetActive(false);
     }
 
-    void Change_weapon_mode()
-    {
-        if(weapon_mode != 2){
-            weapon_mode += 1;
-        }
-        else{
-            weapon_mode = 0;
-        }
     
-
-        switch(weapon_mode)
-        {
-            case 0:
-                damage = 2;
-                range = 100;
-                bullets_per_second = 5;
-                break;
-
-            case 1:
-                damage = 5;
-                range = 5;
-                bullets_per_second = 2; 
-                break;
-
-            case 2:
-                damage = 1;
-                range = 10;
-                bullets_per_second = 10;
-                break;
-        }
-
-        Debug.Log("zmena na");
-    }
 }
